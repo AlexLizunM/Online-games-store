@@ -1,0 +1,10 @@
+language: ruby
+rvm:
+  - 2.6.4
+cache: bundler
+services:
+  - postgresql
+before_script:
+  - rails db:create
+  - rails db:migrate
+script:  rspec 
