@@ -1,5 +1,7 @@
 # README
 
+[![Build Status](https://travis-ci.org/AlexLizunM/Online-games-store.svg?branch=master)](https://travis-ci.org/AlexLizunM/Online-games-store)
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
