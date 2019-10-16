@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+50.times do
+	game = Game.create!(
+		name:Faker::Game.title,
+		price:Faker::Number.within(range: 100..10000)
+		)
+	game.cover.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
+end
