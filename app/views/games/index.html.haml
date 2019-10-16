@@ -1,0 +1,12 @@
+%table
+  %thead
+    %tr
+      %th= name
+      %th= price
+      %th= cover
+  %tbody
+    - @games.each do |game|
+      %tr
+        %td= truncate(game.name, length: 20)
+        %td= to_dollars(game.price)
+        %td= image_tag(game.cover, size: '400x200') if game.cover.attached?
