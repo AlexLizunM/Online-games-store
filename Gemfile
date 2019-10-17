@@ -24,6 +24,11 @@ gem 'coffee-rails', '~> 4.2'
 gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
+gem 'activeadmin'
+gem 'devise'
+gem 'cancancan'
+gem 'draper'
+gem 'pundit'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -58,7 +63,8 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'shoulda-matchers'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '~> 3.6'
+  gem 'webdrivers', '~> 4.0'
   gem 'database_cleaner'
   gem 'simplecov', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
