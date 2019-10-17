@@ -59,6 +59,7 @@ group :test do
   gem 'shoulda-matchers'
   gem 'selenium-webdriver'
   gem 'database_cleaner'
+  gem 'simplecov', require: false
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
   gem 'rspec-rails', '~> 3.8'
