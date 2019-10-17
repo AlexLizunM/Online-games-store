@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
 
   def index
-    @games = Game.all
+    @pagy, @games = pagy(Game.all, items:9)
   end
 end
