@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+ @import "_bootstrap";
+ .row1, .row2 {
+   text-align: right;
+ }
+ .game-element {
+   margin: 25px;
+   margin-right: 50px;
+ }
+ .game-container {
+   margin: 0px;
+ }
+
+ @media (min-width: 1200px) {
+  .container {
+    max-width: 100%;
+  }
+}
