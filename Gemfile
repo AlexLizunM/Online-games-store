@@ -62,7 +62,7 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'shoulda-matchers'
-  gem 'selenium-webdriver', '~> 3.6'
+  gem 'selenium-webdriver', '~> 3.11'
   gem 'webdrivers', '~> 4.0'
   gem 'database_cleaner'
   gem 'simplecov', require: false
