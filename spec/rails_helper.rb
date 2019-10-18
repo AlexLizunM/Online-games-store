@@ -45,6 +45,7 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 
+  config.include Warden::Test::Helpers
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.
@@ -64,6 +65,17 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.before(:each) do
+    Capybara.register_driver :chrome do |app|
+      options = Selenium::WebDriver::Chrome::Options.new(args: %w[--no-sandbox --disable-dev-shm-usage --disable-gpu --headless])
+    
+      Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+    end
+
+    Capybara.javascript_driver = :chrome
+    Capybara.current_driver = :chrome
+  end
 
   Shoulda::Matchers.configure do |config|
     config.integrate do |with|
