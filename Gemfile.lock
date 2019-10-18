@@ -69,6 +69,8 @@ GEM
       public_suffix (>= 2.0.2, < 5.0)
     arbre (1.2.1)
       activesupport (>= 3.0.0)
+    archive-zip (0.12.0)
+      io-like (~> 0.3.0)
     arel (9.0.0)
     autoprefixer-rails (9.6.5)
       execjs
@@ -96,6 +98,9 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    chromedriver-helper (2.1.1)
+      archive-zip (~> 0.10)
+      nokogiri (~> 1.8)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -162,6 +167,7 @@ GEM
       has_scope (~> 0.6)
       railties (>= 5.0, < 6.1)
       responders (>= 2, < 4)
+    io-like (0.3.0)
     jbuilder (2.9.1)
       activesupport (>= 4.2.0)
     jquery-rails (4.3.5)
@@ -337,10 +343,6 @@ GEM
       activemodel (>= 5.0)
       bindex (>= 0.4.0)
       railties (>= 5.0)
-    webdrivers (4.1.3)
-      nokogiri (~> 1.6)
-      rubyzip (>= 1.3.0)
-      selenium-webdriver (>= 3.0, < 4.0)
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
@@ -357,6 +359,7 @@ DEPENDENCIES
   byebug
   cancancan
   capybara (>= 2.15)
+  chromedriver-helper
   coffee-rails (~> 4.2)
   database_cleaner
   devise
@@ -373,7 +376,7 @@ DEPENDENCIES
   rails (~> 5.2.3)
   rspec-rails (~> 3.8)
   sass-rails (~> 5.0)
-  selenium-webdriver (~> 3.11)
+  selenium-webdriver
   shoulda-matchers
   simplecov
   spring
@@ -382,7 +385,6 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
-  webdrivers (~> 4.0)
 
 RUBY VERSION
    ruby 2.6.4p104
