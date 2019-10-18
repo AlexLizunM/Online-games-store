@@ -8,6 +8,10 @@ ActiveAdmin.setup do |config|
 
   config.logout_link_path = :destroy_admin_user_session_path
 
+  config.comments = false
+
+  config.comments_menu = false
+
   config.batch_actions = true
 
   config.filter_attributes = [:encrypted_password, :password, :password_confirmation]

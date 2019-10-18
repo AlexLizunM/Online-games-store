@@ -7,7 +7,7 @@ require 'rails_helper'
 #   I want to create game
 feature 'Create Game', type: :feature do
   let!(:admin) { AdminUser.create!(email: 'admin@example.com', password: 'password') }
-
+  let(:last_game) { Game.last}
   before do
     login_as(admin)
     visit admin_games_path
@@ -23,8 +23,8 @@ feature 'Create Game', type: :feature do
     fill_in('game_price', with: 99900)
     page.attach_file('game_cover', 'db/picture_for_seed/duke.jpg')
     expect { click_button 'Create Game' }.to change { Game.count }.by(1)
-    expect(Game.last.name).to eq('Duke Nenukem')
-    expect(Game.last.price).to eq(99900)
-    expect(Game.last.cover.attached?).to be true
+    expect(last_game.name).to eq('Duke Nenukem')
+    expect(last_game.price).to eq(99900)
+    expect(last_game.cover.attached?).to be true
   end
 end
