@@ -68,7 +68,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     Capybara.register_driver :chrome do |app|
-      options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox disable-gpu])
+      options = Selenium::WebDriver::Chrome::Options.new(args: %w[--no-sandbox --disable-dev-shm-usage --disable-gpu --headless])
     
       Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
     end
