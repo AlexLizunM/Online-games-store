@@ -23,11 +23,28 @@
  }
  .game-container {
    margin: 0px;
+   margin-right: 0;
  }
 
- @media (min-width: 1200px) {
-  .container {
-    max-width: 100%;
+ .sidebar-wrapper {
+    min-height: 100vh;
+    min-width: 16vw;
+}
+
+.search {
+  margin-left: 15px;
+  margin-top: 20px;
+}
+.page-content-wrapper {
+  min-width: 100vw;
+}
+ @media (min-width: 768px) {
+  .sidebar-wrapper {
+    margin-left: 0;
+  }
+  .page-content-wrapper {
+    min-width: 0;
+    width: 100%;
   }
 }
 
