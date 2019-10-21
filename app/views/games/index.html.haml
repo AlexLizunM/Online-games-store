@@ -11,12 +11,10 @@
     .col-10
       .row 
         - @games.each do |game|
-          .col-lg-3.col-md-4.col-sm-6.game-element
-            .row
-              = image_tag(game.cover, size: '300x200') if game.cover.attached?
-            .row.game-title
-              = truncate(game.name, length: 20)
-            .row.game-title
-              = to_dollars(game.price)
+          .card.game-card
+            = image_tag(game.cover, size: '300x200') if game.cover.attached?
+            .card-body
+              %h5.card-title= truncate(game.name, length: 20)
+              %p.card-text= to_dollars(game.price)
       .row.justify-content-center
         != pagy_bootstrap_nav(@pagy)
