@@ -13,7 +13,7 @@ feature 'Search for Game', type: :feature do
   # Scenario: I search for game successfully
   #   When I fill in a search form and press submit
   #   Then I have a results of search due to my form content
-  scenario 'Seatch for a game successfully', js: true do
+  scenario 'Search for a game successfully', js: true do
     visit games_path 
     fill_in 'q_name_cont', with: 'portal'
     click_button 'search-button'

@@ -6,7 +6,7 @@
       = search_form_for @q do |f|
         = f.label :search_game
         = f.search_field :name_cont
-        %button{ :type => "submit", :id => "search-button" }
+        %button{ type: "submit", id: "search-button" }
           = fa_icon "search"
     .col-10
       .row 
