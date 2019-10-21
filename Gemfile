@@ -11,6 +11,7 @@ gem 'pg'
 gem 'puma', '~> 3.11'
 gem 'bootstrap', '~> 4.3.1'
 gem 'pagy', '~> 3.5'
+gem "font-awesome-rails"
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -26,6 +27,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
+gem 'ransack'
 gem 'cancancan'
 gem 'draper'
 gem 'pundit'

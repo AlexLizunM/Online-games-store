@@ -3,6 +3,7 @@
 class GamesController < ApplicationController
 
   def index
-    @pagy, @games = pagy(Game.all, items: 9)
+    @q = Game.ransack(params[:q])
+    @pagy, @games = pagy(@q.result, items: 9)  
   end
 end
