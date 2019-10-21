@@ -15,7 +15,7 @@ feature 'Search for Game', type: :feature do
   #   Then I have a results of search due to my form content
   scenario 'Seatch for a game successfully', js: true do
     visit games_path 
-    fill_in 'search', with: 'portal'
+    fill_in 'q_name_cont', with: 'portal'
     click_button 'search-button'
     expect(page).not_to have_content 'Fifa'
   end
