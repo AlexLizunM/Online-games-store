@@ -3,6 +3,10 @@
 .game-container.container
   .row
     .col-2.bg-primary
+      = form_tag(games_path, :method => "get", id: "search-form") do
+        = text_field_tag :search, params[:search], placeholder: "Search Games"
+        %button{:name => "search", :type => "submit"}
+          %i.fa.fa-search
     .col-10
       .row 
         - @games.each do |game|
