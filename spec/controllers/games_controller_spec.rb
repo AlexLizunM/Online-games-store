@@ -4,12 +4,12 @@ require 'rails_helper'
 
 describe GamesController do
   describe 'Search' do
-    let!(:game1) { create(:game, name: 'Portal') }
-    let!(:game2) { create(:game, name: 'Fifa') }
+    let!(:game_to_search) { create(:game, name: 'Portal') }
+    let!(:game_to_fail) { create(:game, name: 'Fifa') }
 
-		it 'Searchs for games due to params' do
-      get :index, params: { search: 'port' }
-      expect(@controller.view_assigns['games']).to contain_exactly(game1)
+    it 'Searchs for games due to params' do
+      get :index, params: { q: 'port' }
+      expect(@controller.view_assigns['games']).to contain_exactly(game_to_search)
     end
   end
 end
