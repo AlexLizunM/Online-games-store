@@ -7,6 +7,8 @@
         = f.search_field(:name_cont, placeholder: 'Search games')
         %button{ type: 'submit', id: 'search-button' }
           = fa_icon "search"
+        = f.search_field(:price_money_gteq, placeholder: 'Min Price')
+        = f.search_field(:price_money_lteq, placeholder: 'Max Price')
   .page-content-wrapper
     .container-fluid
       .row.justify-content-center 
