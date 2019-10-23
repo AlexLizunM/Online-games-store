@@ -1,0 +1,13 @@
+%p
+  %strong= Game.human_attribute_name("name")
+  = @game.name
+%p
+  %strong= Game.human_attribute_name("price")
+  = to_dollars(@game.price)
+%p
+  %strong= Game.human_attribute_name("description")
+  = @game.description
+%p
+  %strong= Game.human_attribute_name("screenshots")
+- @game.screenshots.each do |ss|
+  = image_tag(ss, size: '300x200')

@@ -7,4 +7,8 @@ class GamesController < ApplicationController
     @q = Game.ransack(params[:q])
     @pagy, @games = pagy(@q.result, items: ITEMS_PER_PAGE)
   end
+
+  def show
+    @game = Game.find(params[:id])
+  end
 end
