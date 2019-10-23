@@ -4,8 +4,8 @@ require 'rails_helper'
 
 describe GamesController do
   describe 'Search' do
-    let!(:game_to_search) { create(:game, name: 'Portal', price: 2000) }
-    let!(:game_to_fail) { create(:game, name: 'Fifa', price: 5000) }
+    let!(:game_to_search) { create(:game, name: 'Portal', price: 2000, description: 'Good Game') }
+    let!(:game_to_fail) { create(:game, name: 'Fifa', price: 5000, description: 'Good Game') }
 
     it 'Searchs for games due to name param' do
       get :index, params: { q: { name_cont: 'port' } }

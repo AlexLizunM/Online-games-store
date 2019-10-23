@@ -14,7 +14,7 @@
       .row.justify-content-center 
         - @games.each do |game|
           .card.game-card
-            = image_tag(game.cover, size: '300x200') if game.cover.attached?
+            = link_to image_tag(game.cover, size: '300x200'), game_path(game) if game.cover.attached?
             .card-body
               %h5.card-title= truncate(game.name, length: 20)
               %p.card-text= to_dollars(game.price)

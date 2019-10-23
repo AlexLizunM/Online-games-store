@@ -14,3 +14,8 @@
   game.cover.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
 end
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+
+game = Game.create!(name: 'Skyrim', price: 999999, description: "Voobcshe axrenitelnaya igra bazary net no dolbanii Todd Govard gde 6 igra?")
+game.cover.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
+game.screenshots.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
+game.screenshots.attach(io: File.open('db/picture_for_seed/ss_duke.jpeg'), filename: 'ss_duke.jpeg')
