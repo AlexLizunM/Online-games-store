@@ -14,7 +14,6 @@ feature 'Visit game page', type: :feature do
     expect(page).to have_content 'Duke Nukem'
     expect(page).to have_content '50'
     expect(page).to have_content 'good game'
-    expect(game.cover.attached?).to be true
-    expect(game.screenshots.attached?).to be true
+    expect(page).to have_css('img')
   end
 end
