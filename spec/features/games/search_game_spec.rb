@@ -6,8 +6,8 @@ require 'rails_helper'
 #   I want to search for game
 feature 'Search for Game', type: :feature do
   before do
-    create(:game, name: 'Portal', price: 2000, description: 'Good Game')
-    create(:game, name: 'Fifa', price: 5000, description: 'Good Game')
+    create(:game, name: 'Portal', price: 2000)
+    create(:game, name: 'Fifa', price: 5000)
   end
 
   # Scenario: I search for game successfully

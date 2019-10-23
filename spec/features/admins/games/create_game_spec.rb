@@ -23,9 +23,12 @@ feature 'Create Game', type: :feature do
     fill_in('game_price', with: 99900)
     fill_in('game_description', with: "Good Game")
     page.attach_file('game_cover', 'db/picture_for_seed/duke.jpg')
+    page.attach_file('game_screenshots', 'db/picture_for_seed/ss_duke.jpeg')
+    page.attach_file('game_screenshots', 'db/picture_for_seed/duke.jpg')
     expect { click_button 'Create Game' }.to change { Game.count }.by(1)
     expect(last_game.name).to eq('Duke Nenukem')
     expect(last_game.price).to eq(99900)
     expect(last_game.cover.attached?).to be true
+    expect(last_game.screenshots.attached?).to be true
   end
 end

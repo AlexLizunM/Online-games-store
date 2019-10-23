@@ -32,9 +32,9 @@ ActiveAdmin.register Game do
         image_tag(game.cover, size: '300x200')
       end
       row :screenshots do |game|
-        game.screenshots.each do |ss|
+        game.screenshots.each do |image|
           span do
-            image_tag(ss, size: '300x200')
+            image_tag(image, size: '300x200')
           end
         end
         span
