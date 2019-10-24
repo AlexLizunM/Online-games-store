@@ -23,7 +23,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :nickname
       row :email
-      row :cover do |user|
+      row :avatar do |user|
         image_tag(user.avatar, size: '300x200')
       end
     end
