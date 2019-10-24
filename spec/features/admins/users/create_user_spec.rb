@@ -8,6 +8,7 @@ require 'rails_helper'
 feature 'Create User', type: :feature do
   let!(:admin) { AdminUser.create!(email: 'admin@example.com', password: 'password') }
   let(:last_user) { User.last }
+  
   before do
     login_as(admin)
     visit admin_users_path
