@@ -3,16 +3,15 @@
 #   As a visitor
 #   I want to sign up
 #   So I can visit protected areas of the site
-feature 'Sign Up', :devise do
+feature 'Sign Up', type: :feature do
   # Scenario: Visitor can sign up with valid email address and password
   #   Given I am not signed in
   #   When I sign up with a valid email address and password
   #   Then I see a successful sign up message
-  scenario 'visitor can sign up with valid email address and password', js: true do
+  scenario 'visitor can confirm after succesfull signing up', js: true do
     signup_visitor('assasin', 'test@example.com', 'please123')
-    txts = [I18n.t('devise.registrations.signed_up'), I18n.t('devise.registrations.signed_up_but_unconfirmed')]
 
-    expect(page).to have_content(/.*#{txts[0]}.*|.*#{txts[1]}.*/)
+    expect(page).to have_content I18n.t('devise.registrations.signed_up_but_unconfirmed')
   end
 
   # Scenario: Visitor cannot sign up with invalid email address
@@ -21,7 +20,7 @@ feature 'Sign Up', :devise do
   #   Then I see an invalid email message
   scenario 'visitor cannot sign up with invalid email address', js: true do
     signup_visitor('assasin', 'invalid@email', 'please123')
-    
+
     expect(page).to have_content 'Email is invalid'
   end
 

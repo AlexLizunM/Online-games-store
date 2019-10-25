@@ -20,6 +20,5 @@
                 = link_to 'Sign up', new_user_registration_path, method: :get, class: 'btn btn-primary mr-2'
                 = link_to 'Log in', new_user_session_path, class: 'btn btn-primary'
     - flash.each do |key, value|
-      = content_tag :div, value, class: "alert alert-danger"             
+      = content_tag :div, value, class: "#{flash_class(key)}"
     = yield 
-  

@@ -4,7 +4,7 @@
 #   I want to sign in
 #   So I can visit protected areas of the site
 feature 'Sign in', type: :feature do
-  let!(:user) { create(:user, confirmed_at: '25.10.2019') }
+  let!(:user) { create(:user, :confirmed) }
   # Scenario: User cannot sign in if not registered
   #   Given I do not exist as a user
   #   When I sign in with valid credentials
@@ -33,7 +33,7 @@ feature 'Sign in', type: :feature do
   #   Then I see an invalid email message
   scenario 'user cannot sign in with wrong email', js: true do
     signin_user('invalid@email.com', user.password)
-    
+
     expect(page).to have_content 'Invalid Email or password'
   end
 

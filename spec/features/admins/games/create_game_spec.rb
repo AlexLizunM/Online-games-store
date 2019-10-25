@@ -7,6 +7,7 @@ require 'rails_helper'
 feature 'Create Game', type: :feature do
   let!(:admin) { AdminUser.create!(email: 'admin@example.com', password: 'password') }
   let(:last_game) { Game.last }
+  
   before do
     signin_admin(admin.email, admin.password)
     visit admin_games_path
