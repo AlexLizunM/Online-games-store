@@ -4,9 +4,13 @@ rvm:
 cache: bundler
 services:
   - postgresql
+  - redis-server
 before_script:
   - bundle exec rake db:create
   - bundle exec rake db:migrate
 script: bundle exec rspec
 addons:
   chrome: stable 
+  apt:
+    packages:
+      - redis-tools

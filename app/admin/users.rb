@@ -1,5 +1,7 @@
 ActiveAdmin.register User do
   permit_params :nickname, :email, :avatar
+  remove_filter :avatar_attachment, :avatar_blob
+  actions :all, except: [:edit, :new]
 
   index do
     selectable_column
@@ -10,21 +12,12 @@ ActiveAdmin.register User do
     actions
   end
 
-  form do |f|
-    f.inputs do
-      f.input :nickname
-      f.input :email
-      f.input :avatar, as: :file
-    end
-    f.actions
-  end
-
   show do
     attributes_table do
       row :nickname
       row :email
       row :avatar do |user|
-        image_tag(user.avatar, size: '300x200')
+        image_tag(user.avatar, size: '300x200') if user.avatar.attached?
       end
     end
   end

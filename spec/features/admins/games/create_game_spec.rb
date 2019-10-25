@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
 require 'rails_helper'
-
 # Feature: Create Game
 #   As an admin
 #   I want to create game
 feature 'Create Game', type: :feature do
   let!(:admin) { AdminUser.create!(email: 'admin@example.com', password: 'password') }
   let(:last_game) { Game.last }
+  
   before do
-    login_as(admin)
+    signin_admin(admin.email, admin.password)
     visit admin_games_path
   end
 

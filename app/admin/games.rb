@@ -1,7 +1,6 @@
 ActiveAdmin.register Game do
   permit_params :name, :price, :cover, :description, screenshots: []
-  remove_filter :screenshots_attachments
-  remove_filter :screenshots_blobs
+  remove_filter :screenshots_attachments, :screenshots_blobs, :cover_attachment, :cover_blob
 
   index do
     selectable_column

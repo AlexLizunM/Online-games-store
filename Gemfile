@@ -27,6 +27,8 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'activeadmin'
 gem 'devise'
+gem "devise-async"
+gem 'sidekiq'
 gem 'ransack'
 gem 'cancancan'
 gem 'draper'
