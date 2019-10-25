@@ -1,0 +1,25 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title OnlineGamesStore
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  %body
+    %nav.navbar-dark.bg-dark
+      %span
+        .navbar-brand.mb-0.h1 Online Game Store
+        .row.links.justify-content-end
+          .col-2
+            .row.justify-content-end
+              - if user_signed_in?
+                = link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
+              - else
+                = link_to 'Sign up', new_user_registration_path, method: :get, class: 'btn btn-primary mr-2'
+                = link_to 'Log in', new_user_session_path, class: 'btn btn-primary'
+    - flash.each do |key, value|
+      = content_tag :div, value, class: "alert alert-danger"             
+    = yield 
+  
