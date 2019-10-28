@@ -7,6 +7,7 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    %script{:src => "https://kit.fontawesome.com/a076d05399.js"}
   %body
     %nav.navbar-dark.bg-dark
       %span
@@ -15,11 +16,10 @@
           .col-2
             .row.justify-content-end
               - if user_signed_in?
-                = link_to "Log out", destroy_user_session_path, method: :delete, class: 'btn btn-primary'
                 .dropdown
-                  %button#dropdownMenuButton.btn.btn-secondary.dd-bg.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
+                  %button#dropdownMenuButton.btn.fas.fa-user-ninja.btn-primary.dd-bg.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :type => "button"}
                   .dropdown-menu.dropdown-menu-right{"aria-labelledby" => "dropdownMenuButton"}
-                    %a.dropdown-item{:href => 'users/user', user: current_user} Your profile
+                    %a.dropdown-item{:href => "users/#{current_user.id}"} Your profile
                     .dropdown-divider
                     %a.dropdown-item{:href => 'users/sign_out', 'data-method' => 'delete'} Log out
               - else
