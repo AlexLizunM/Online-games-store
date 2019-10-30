@@ -48,16 +48,43 @@
   }
 }
 
+.menu-item {
+  display: block;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e1e4e8;
+}
+.menu-item-selected{
+  font-weight: 600;
+  color: #24292e;
+}
+.menu-heading{
+  background-color: #f3f5f8;
+}
+
+.Subhead{
+  padding-bottom:  8px;
+  border-bottom: 1px solid #e1e4e8;
+}
+.form-group{
+  margin: 15px 0;
+}
 .game-card {
   margin: 20px;
 }
 
+.dl-pic{
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
 .links {
   padding-bottom: 20px;
   padding-right: 20px;
   margin-right: 0px;
 }
 
+.cont-main{
+  margin-top: 20px;
+}
 .dd-bg {
   background-color: transparent;
   border-color: transparent;

@@ -1,71 +1,24 @@
-%p
-  %strong= User.human_attribute_name("name")
-  = @user.nickname
-%p
-  %strong= User.human_attribute_name("email")
-  = @user.email
-%p
-  %strong= User.human_attribute_name("avatar")
-  = image_tag(@user.avatar, size: '300x200') if @user.avatar.attached?
-%p
-  %strong= link_to 'Change password', edit_user_password_path, class: 'btn btn-primary'
-.application-main{"data-commit-hovercards-enabled" => ""}
-  %main#js-pjax-container{"data-pjax-container" => ""}
-    .page-content.container.clearfix
-      .col-3.float-left.pr-4
-        %nav.menu{"aria-label" => "Personal settings", "data-pjax" => ""}
-          %h3.menu-heading
-            Personal settings
-          %a.js-selected-navigation-item.menu-item{"data-selected-links" => "avatar_settings /settings/profile", :href => "/settings/profile"} Profile
-          %a.js-selected-navigation-item.menu-item{"data-selected-links" => " /settings/admin", :href => "/settings/admin"} Account
-      .col-9.float-left
-        / Public Profile
-        .Subhead.mt-0.mb-0
-          %h2#public-profile-heading.Subhead-heading Public profile
-        .clearfix.gutter.d-flex.flex-shrink-0
-          .col-8
-            / '"`
-            / </textarea></xmp>
-            %form#edit_user_36157461.edit_user{"accept-charset" => "UTF-8", :action => "/users/AlexLizunM", "aria-labelledby" => "public-profile-heading", :method => "post"}
-              %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-              %input{:name => "_method", :type => "hidden", :value => "put"}/
-              %input{:name => "authenticity_token", :type => "hidden", :value => "HbrZClqIfUAUL7vTlNXcJJCbtiB0JxOTB3pRRxsCG2Iw5iEugzjyejOfTo9kY1BuAo2wUJeVWsqgZWZXbYx0+Q=="}/
-              %div
-                %dl.form-group
-                  %dt
-                    %label{:for => "user_profile_name"} Name
-                  %dd
-                    %input#user_profile_name.form-control{:name => "user[profile_name]", :type => "text"}/
-                    .note
-                %dl.form-group
-                  %dt
-                    %label{:for => "user_profile_email"} Public email
-                  %dd
-                    %input#user_email.form-control{:email => "user[email]", :type => "text"}/
-                    .note
-                %p
-                  %button.btn.btn-primary{:type => "submit"} Update profile
-          .col-4.d-inline-block
-            %dl
-              %dt
-                %label.d-block.mb-2 Profile picture
-              %dd.avatar-upload-container.clearfix.position-relative
-                / '"`
-                / </textarea></xmp>
-                %form.edit_user{"accept-charset" => "UTF-8", :action => "/users/AlexLizunM", "aria-label" => "Profile picture", :id => "", :method => "post", :novalidate => "novalidate"}
-                  %input{:name => "utf8", :type => "hidden", :value => "✓"}/
-                  %input{:name => "_method", :type => "hidden", :value => "put"}/
-                  %input{:name => "authenticity_token", :type => "hidden", :value => "ShTyep7YXTqFqfp1x+KbAQ5Sa3dVDhMkkIeSPJIIRjhnSApeR2jSAKIZDyk3VBdLnERtB7a8Wn03mKUs5IYpow=="}/
-                  %file-attachment.js-upload-avatar-image.is-default{"data-alambic-owner-id" => "36157461", "data-alambic-owner-type" => "User", "data-upload-policy-authenticity-token" => "SOH/6dF7uzT6GXO1fHnRDKf71PqtIfcXwoFpNYfzckNBuqGc+0yYEOrRB/9Qduw01fgB5yDBx6OAsaC+CmlJeg==", "data-upload-policy-url" => "/upload/policies/avatars"}
-                    %input#avatar_upload.manual-file-chooser.width-full.ml-0.js-manual-file-chooser{:hidden => "", :type => "file"}/
-                .avatar-upload
-                  %details.dropdown.details-reset.details-overlay
-                    %summary{"aria-haspopup" => "menu", :role => "button"}
-                      %img.avatar.rounded-2{:alt => "@AlexLizunM", :height => "200", :src => "https://avatars0.githubusercontent.com/u/36157461?s=400&v=4", :width => "200"}/
-                      .position-absolute.bg-gray-dark.rounded-2.text-white.px-2.py-1.left-0.bottom-0.ml-2.mb-2
-                        %svg.octicon.octicon-pencil{"aria-hidden" => "true", :height => "16", :version => "1.1", :viewbox => "0 0 14 16", :width => "16"}
-                          %path{:d => "M0 12v3h3l8-8-3-3-8 8zm3 2H1v-2h1v1h1v1zm10.3-9.3L12 6 9 3l1.3-1.3a.996.996 0 011.41 0l1.59 1.59c.39.39.39 1.02 0 1.41z", "fill-rule" => "evenodd"}
-                        Edit
-                    %details-menu.dropdown-menu.dropdown-menu-se{:role => "menu", :style => "z-index: 99"}
-                      %label.dropdown-item.text-normal{:for => "avatar_upload", :role => "menuitem", :style => "cursor: pointer;", :tabindex => "0"}
-                        Upload a photo…
+.Subhead.mt-0.mb-0
+  %h2#public-profile-heading.Subhead-heading Public profile
+.clearfix.gutter.d-flex.flex-shrink-0
+  .col-8
+    = form_with scope: :user, url: user_path, method: :patch do |form|
+      %p
+        = form.label User.human_attribute_name("name")
+        %br/
+        = form.text_field :nickname
+      %p
+        = form.label User.human_attribute_name("email")
+        %br/
+        = form.email_field :email
+      %p
+      = form.file_field :avatar
+      %p
+        %br/           
+        %button.btn.btn-primary{:type => "submit"} Update profile
+  .col-4.d-inline-block
+    %dl.dl-pic
+      %dt
+        %label.d-block.mb-2 Profile picture
+      .avatar-upload
+        = image_tag(@user.avatar, size: '300x200') if @user.avatar.attached?

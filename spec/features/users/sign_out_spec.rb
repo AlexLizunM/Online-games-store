@@ -8,6 +8,7 @@ feature 'Sign out', type: :feature do
 
   before do
     signin_user(user.email, user.password)
+    click_button 'dropdownMenuButton'
     click_link 'Log out'
   end
   # Scenario: User signs out successfully
