@@ -1,14 +1,14 @@
 # frozen_string_literal: true
 
-class ParolesController < ApplicationController
-  layout 'profile'
+class ParolesController < ProfileLayoutController
   
   def show
-    @user = User.find(params[:user_id])
+    find_user
   end
 
   def update
-    @user = User.find(params[:user_id])
+    find_user
+
     unless @user.valid_password?(params[:user][:old_parole])
       flash.now[:alert] = "Error: current password invalid"
       render 'show'
@@ -25,5 +25,9 @@ class ParolesController < ApplicationController
 
   def password_params
     params.require(:user).permit(:password, :password_confirmation)
+  end
+
+  def find_user
+    @user = User.find(params[:user_id])
   end
 end

@@ -15,12 +15,15 @@
  */
  @import "_bootstrap";
  @import "font-awesome";
+
  .game-title {
    text-align: right;
  }
+
  .game-element {
    margin: 25px;
  }
+
  .game-container {
    margin: 0px;
    margin-right: 0;
@@ -35,13 +38,16 @@
   margin-left: 15px;
   margin-top: 20px;
 }
+
 .page-content-wrapper {
   min-width: 100vw;
 }
+
  @media (min-width: 768px) {
   .sidebar-wrapper {
     margin-left: 0;
   }
+
   .page-content-wrapper {
     min-width: 0;
     width: 100%;
@@ -53,39 +59,35 @@
   padding: 8px 10px;
   border-bottom: 1px solid #e1e4e8;
 }
-.menu-item-selected{
+
+.menu-item-selected {
   font-weight: 600;
   color: #24292e;
 }
-.menu-heading{
+
+.menu-heading {
   background-color: #f3f5f8;
 }
 
-.Subhead{
+.subhead {
   padding-bottom:  8px;
   border-bottom: 1px solid #e1e4e8;
 }
-.form-group{
+
+.form-group {
   margin: 15px 0;
 }
+
 .game-card {
   margin: 20px;
 }
 
-.dl-pic{
-  margin-top: 1rem;
-  margin-left: 1rem;
-}
 .links {
   padding-bottom: 20px;
   padding-right: 20px;
   margin-right: 0px;
 }
 
-.cont-main{
+.cont-main {
   margin-top: 20px;
-}
-.dd-bg {
-  background-color: transparent;
-  border-color: transparent;
 }
