@@ -1,12 +1,14 @@
 .wrapper.d-flex
-  .sidebar-wrapper.bg-primary.border-right
+  .sidebar-wrapper.bg-primary.border-right.row.justify-content-center
     = search_form_for @q do |f|
       .search
-        = f.search_field(:name_cont, placeholder: 'Search games')
-        %button{ type: 'submit', id: 'search-button' }
-          = fa_icon "search"
-        = f.search_field(:price_money_gteq, placeholder: 'Min Price')
-        = f.search_field(:price_money_lteq, placeholder: 'Max Price')
+        = f.search_field(:name_cont, placeholder: 'Search games', class: 'form-control')
+        .row.justify-content-between
+          .col-6
+            = f.search_field(:price_money_gteq, placeholder: 'Min Price', class: 'form-control')
+          .col-6
+            = f.search_field(:price_money_lteq, placeholder: 'Max Price', class: 'form-control')  
+        = f.submit(placeholder: "search", class: 'form-control')
   .page-content-wrapper
     .container-fluid
       .row.justify-content-center 

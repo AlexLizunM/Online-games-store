@@ -1,13 +1,27 @@
-%p
-  %strong= Game.human_attribute_name("name")
-  = @game.name
-%p
-  %strong= Game.human_attribute_name("price")
-  = to_dollars(@game.price)
-%p
-  %strong= Game.human_attribute_name("description")
-  = @game.description
-%p
-  %strong= Game.human_attribute_name("screenshots")
-- @game.screenshots.each do |ss|
-  = image_tag(ss, size: '300x200')
+.row.game-page
+  .col-4
+    #slider
+      #myCarousel.carousel.slide
+        / main slider carousel items
+        .carousel-inner
+          - @game.screenshots.each_with_index do |ss, index|
+            %div{class: "carousel-item #{'active' if index == 0}", "data-slide-number" => index}
+              = image_tag(ss, :class => 'img-fluid')
+          %a.carousel-control-prev{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
+            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+            %span.sr-only Previous
+          %a.carousel-control-next{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
+            %span.carousel-control-next-icon{"aria-hidden" => "true"}
+            %span.sr-only Next
+        / main slider carousel nav controls
+  .col-4
+    %p.game_name
+      = @game.name
+    %p
+      %strong= Game.human_attribute_name("price:")
+      = to_dollars(@game.price)
+    %p
+      %strong= Game.human_attribute_name("description:")
+      = @game.description
+  / /main slider carousel
+
