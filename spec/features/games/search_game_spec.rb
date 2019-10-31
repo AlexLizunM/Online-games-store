@@ -16,7 +16,7 @@ feature 'Search for Game', type: :feature do
   scenario 'Search for a game successfully by name', js: true do
     visit games_path 
     fill_in 'q_name_cont', with: 'portal'
-    click_button 'search-button'
+    click_button 'Search'
     expect(page).not_to have_content 'Fifa'
   end
 
@@ -24,7 +24,7 @@ feature 'Search for Game', type: :feature do
     visit games_path 
     fill_in 'q_price_money_gteq', with: 10
     fill_in 'q_price_money_lteq', with: 30
-    click_button 'search-button'
+    click_button 'Search'
     expect(page).not_to have_content 'Fifa'
   end
 end
