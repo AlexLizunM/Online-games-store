@@ -3,15 +3,15 @@
   .field
     = f.label :old_parole, 'Old password'
     %br/
-    = f.password_field :old_parole, autofocus: true
+    = f.password_field :old_parole, autofocus: true, class: 'form-control'
   .field
     = f.label :password, 'New password'
     %br/
-    = f.password_field :password, autofocus: true
+    = f.password_field :password, autofocus: true, class: 'form-control'
   .field
     = f.label :password_confirmation, 'Confirm new password'
     %br/
-    = f.password_field :password_confirmation
+    = f.password_field :password_confirmation, class: 'form-control'
   .actions
     %br/
-    = f.submit 'Change my password'
+    = f.submit('Change my password', class: 'btn btn-primary')
