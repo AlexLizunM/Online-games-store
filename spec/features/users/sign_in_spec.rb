@@ -11,7 +11,7 @@ feature 'Sign in', type: :feature do
   #   Then I see an invalid credentials message
   scenario 'user cannot sign in if not registered', js: true do
     signin_user('test@example.com', user.password)
-
+    
     expect(page).to have_content 'Invalid Email or password'
   end
 
@@ -22,6 +22,7 @@ feature 'Sign in', type: :feature do
   #   Then I see a success message
   scenario 'user can sign in with valid credentials', js: true do
     signin_user(user.email, user.password)
+    click_button 'dropdownMenuButton'
 
     expect(page).to have_content 'Log out'
   end

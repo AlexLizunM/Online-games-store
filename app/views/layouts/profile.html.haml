@@ -1,0 +1,11 @@
+= render 'layouts/navbar'
+.page-content.container.clearfix.cont-main
+  .col-3.float-left.pr-4
+    %nav.menu{"aria-label" => "Personal settings", "data-pjax" => ""}
+      %h3.menu-heading
+        Personal settings
+      .list-group
+        %a.list-group-item.list-group-item-action{href: user_path(@user), class: active_class(user_path(@user))}Profile
+        %a.list-group-item.list-group-item-action{href: user_parole_path(@user), class: active_class(user_parole_path(@user))} Change password
+  .col-9.float-left
+    = yield 

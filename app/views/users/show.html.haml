@@ -1,0 +1,22 @@
+.subhead.mt-0.mb-0
+  %h2#public-profile-heading.Subhead-heading Public profile
+.clearfix.gutter.d-flex.flex-shrink-0
+  .col-8
+    = form_with scope: :user, url: user_path, method: :patch do |form|
+      %p
+        = form.label User.human_attribute_name("name")
+        %br/
+        = form.text_field :nickname
+      %p
+        = form.label User.human_attribute_name("email")
+        %br/
+        = form.email_field :email
+      %p
+      = form.file_field :avatar
+      %p
+        %br/           
+        %button.btn.btn-primary{:type => "submit"} Update profile
+  .col-4.d-inline-block
+    %label.d-block.mb-2 Profile picture
+    .avatar-upload
+      = image_tag(@user.avatar, size: '300x200') if @user.avatar.attached?
