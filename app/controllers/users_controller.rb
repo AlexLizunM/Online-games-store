@@ -14,8 +14,11 @@ class UsersController < ProfileLayoutController
     else
       render 'edit'
     end
+
   end
 
+  private
+  
   def user_params
     params.require(:user).permit(:nickname, :email, :avatar)
   end
