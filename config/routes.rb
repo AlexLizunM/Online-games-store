@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resource :parole, only:[:show, :update]
   end
   
+  resources :bucket_items
   root to: 'games#index'
 end
