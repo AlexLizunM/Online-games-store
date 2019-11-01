@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :parole, only:[:show, :update]
+    resources :bucket_items
   end
   
-  resources :bucket_items
   root to: 'games#index'
 end

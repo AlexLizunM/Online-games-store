@@ -11,7 +11,7 @@
   %body
     %nav.navbar-dark.navbar-ht.bg-dark
       .row.links.justify-content-between.custom_row.align-items-center
-        .navbar-brand.mb-0.h1 Online Game Store
+        %a.navbar-brand.mb-0.h1{href: games_path} Online Game Store
         .col-2
           .row.justify-content-end
             - if user_signed_in?

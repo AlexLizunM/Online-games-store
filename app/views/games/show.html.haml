@@ -2,18 +2,16 @@
   .col-4
     #slider
       #myCarousel.carousel.slide
-        / main slider carousel items
         .carousel-inner
           - @game.screenshots.each_with_index do |ss, index|
             %div{class: "carousel-item #{'active' if index == 0}", "data-slide-number" => index}
               = image_tag(ss, :class => 'img-fluid')
-          %a.carousel-control-prev{"data-slide" => "prev", :href => "#myCarousel", :role => "button"}
-            %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+          %a.carousel-control-prev{'data-slide' => 'prev', :href => '#myCarousel', :role => 'button'}
+            %span.carousel-control-prev-icon{'aria-hidden' => 'true'}
             %span.sr-only Previous
-          %a.carousel-control-next{"data-slide" => "next", :href => "#myCarousel", :role => "button"}
-            %span.carousel-control-next-icon{"aria-hidden" => "true"}
+          %a.carousel-control-next{'data-slide' => 'next', :href => '#myCarousel', :role => 'button'}
+            %span.carousel-control-next-icon{'aria-hidden' => 'true'}
             %span.sr-only Next
-        / main slider carousel nav controls
   .col-4
     %p.game_name
       = @game.name
@@ -23,5 +21,17 @@
     %p
       %strong= Game.human_attribute_name("description:")
       = @game.description
-  / /main slider carousel
-
+    %p
+    - if user_signed_in?
+      .col-4.game_button
+      - if current_user.games.include?(@game)
+        %h3 Added to your Bucket
+        = form_with scope: :bucket_item, local: true, url: user_bucket_item_path(current_user), method: :delete do |f|
+          = f.hidden_field(:user_id, value: current_user.id)
+          = f.hidden_field(:game_id, value: @game.id)
+          = f.submit('Remove from Bucket', class: 'btn btn-primary') 
+      - else
+        = form_with scope: :bucket_item, local: true, url: user_bucket_items_path(current_user), method: :post do |f|
+          = f.hidden_field(:user_id, value: current_user.id)
+          = f.hidden_field(:game_id, value: @game.id)
+          = f.submit('Add to Bucket', class: 'btn btn-primary')

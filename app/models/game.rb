@@ -2,8 +2,6 @@ class Game < ApplicationRecord
 
   has_one_attached :cover
   has_many_attached :screenshots
-  has_many :bucket_items
-  has_many :users, through: :bucket_items
   validates :name, presence: true, length: { maximum: 128 }
   validates :price, presence: true, numericality: { greater_than: 0 }
   validates :description, presence: true, length: { maximum: 500 }
