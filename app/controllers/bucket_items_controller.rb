@@ -12,7 +12,7 @@ class BucketItemsController < ProfileLayoutController
   end
 
   def destroy
-    @bucket_item = BucketItem.find_by(user_id: bucket_item_params[:user_id], game_id: bucket_item_params[:game_id])
+    @bucket_item = @user.bucket_items.find_by(game_id: bucket_item_params[:game_id])
     @bucket_item.destroy
     redirect_back(fallback_location: root_path)
   end
@@ -24,6 +24,6 @@ class BucketItemsController < ProfileLayoutController
   end
 
   def bucket_item_params
-		params.require(:bucket_item).permit([:user_id, :game_id])
-	end
+  params.require(:bucket_item).permit([:user_id, :game_id])
+  end
 end

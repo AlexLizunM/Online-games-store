@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :parole, only:[:show, :update]
-    resources :bucket_items
+    resources :bucket_items, only:[:index, :create, :destroy]
   end
   
   root to: 'games#index'

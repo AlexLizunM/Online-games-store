@@ -8,10 +8,13 @@ feature 'Visit my bucket', type: :feature do
   let!(:game) { create(:game) }
   let(:user) { create(:user, :confirmed) }
 
-  scenario 'I can see game in my bucket if i added it', js: true do
+  before do
     signin_user(user.email, user.password)
     visit game_path(game)
+  end
 
+  scenario 'I can see game in my bucket if i added it', js: true do
+    
     expect { click_button 'Add to Bucket' }.to change { BucketItem.count }.by(1)
     
     click_button 'dropdownMenuButton'
@@ -24,8 +27,7 @@ feature 'Visit my bucket', type: :feature do
   end
 
   scenario 'I can see that game was deleted from my bucket if i click on remove button', js: true do
-    signin_user(user.email, user.password)
-    visit game_path(game)
+
     click_button 'Add to Bucket'
     click_button 'dropdownMenuButton'
     click_link 'Your profile'
