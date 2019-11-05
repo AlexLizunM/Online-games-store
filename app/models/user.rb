@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  before_create :set_default_avatar
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
   has_one_attached :avatar
@@ -10,5 +12,9 @@ class User < ApplicationRecord
 
   def send_devise_notification(notification, *args)
     devise_mailer.send(notification, self, *args).deliver_later
+  end
+
+  def set_default_avatar
+    self.avatar.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
   end
 end

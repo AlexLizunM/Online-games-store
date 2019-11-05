@@ -2,9 +2,11 @@
 
 class CommentsController < ProfileLayoutController
   before_action :find_user
+  COMMENTS_PER_PAGE = 10
 
   def index
-    @comments = @user.comments  
+    @q = @user.comments.ransack(params[:q])
+    @pagy, @comments = pagy(@q.result, items: COMMENTS_PER_PAGE)
   end
 
   def create
