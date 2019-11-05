@@ -1,20 +1,17 @@
 # frozen_string_literal: true
 
 class UsersController < ProfileLayoutController
+  before_action :find_user
 
   def show
-    find_user
   end
 
   def update
-    find_user
-
     if @user.update(user_params)
       redirect_to user_path(@user)
     else
       render 'edit'
     end
-
   end
 
   private

@@ -1,0 +1,16 @@
+.wrapper.d-flex
+  .page-content-wrapper
+    .container-fluid
+      .row.justify-content-center 
+        - @bucket_items.each do |game|
+          .card.game-card
+            = link_to image_tag(game.cover, size: '300x200'), game_path(game) if game.cover.attached?
+            .card-body
+              %h5.card-title= truncate(game.name, length: 20)
+              .row.justify-content-between.ml-0.5
+                .bucket-card-text= to_dollars(game.price)
+                = form_with scope: :bucket_item, local: true, url: user_bucket_item_path(current_user, game), method: :delete do |f|
+                  = f.hidden_field(:user_id, value: current_user.id)
+                  = f.hidden_field(:game_id, value: game.id)
+                  = f.submit('Remove from Bucket', class: 'btn btn-primary')
+      .row.justify-content-center

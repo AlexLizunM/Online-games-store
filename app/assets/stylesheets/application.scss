@@ -81,6 +81,12 @@ body{
   min-width: 100vw;
 }
 
+.bucket-card-text {
+  vertical-align: middle;
+  text-align: center;
+  line-height: 35px;
+}
+
  @media (min-width: 768px) {
   .sidebar-wrapper {
     margin-left: 0;
@@ -187,4 +193,8 @@ body{
 .game_name {
   font-size: 32px;
   font-weight: 800;
+}
+
+.col-4.game_button {
+  padding-left: 0px;
 }
