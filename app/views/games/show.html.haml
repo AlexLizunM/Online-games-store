@@ -22,6 +22,10 @@
       %strong= Game.human_attribute_name("description:")
       = @game.description
     %p
+      - @game.average_ratio.to_i.times do
+        %span.fa.fa-star.checked
+      - (5 -@game.average_ratio.to_i).times do
+        %span.fa.fa-star
     - if user_signed_in?
       .col-4.game_button
       - if current_user.games.include?(@game)
@@ -35,3 +39,37 @@
           = f.hidden_field(:user_id, value: current_user.id)
           = f.hidden_field(:game_id, value: @game.id)
           = f.submit('Add to Bucket', class: 'btn btn-primary')
+  .col-3.comment
+    - if user_signed_in?
+      = form_with scope: :comment, local: true, url: user_comments_path(current_user), method: :post do |f|
+        = f.hidden_field(:user_id, value: current_user.id)
+        = f.hidden_field(:game_id, value: @game.id)
+        = f.text_area(:content, placeholder: 'Leave a comment...', class: 'form-control', cols: 50, rows: 10)
+        %p
+          .row.justify-content-end.mr-2
+            .col-4
+              .row.justify-content-center
+                %h5.mr-2 rating
+                = f.select(:rating, options_for_select([1, 2, 3, 4, 5]))
+            .col-2
+              = f.submit('Save', class: 'btn btn-primary')
+.row.game-comments-name
+  %h1 Comments
+- @game.comments.each do |c|
+  .row.game-comments
+    .col-1
+      = image_tag(c.user.avatar, size: '50x50') if c.user.avatar.attached?
+      = c.user.nickname
+    .col-1
+      - c.rating.to_i.times do
+        %span.fa.fa-star.checked
+      - (5 - c.rating.to_i).times do
+        %span.fa.fa-star
+    .col-6.comment-body
+      = c.content
+    .col-2
+      = form_with scope: :comment, local: true, url: user_comment_path(current_user, @game), method: :delete do |f|
+        = f.hidden_field(:user_id, value: current_user.id)
+        = f.hidden_field(:game_id, value: @game.id)
+        %i.fas.fa-trash
+        = f.submit('Delete')

@@ -87,6 +87,13 @@ body{
   line-height: 35px;
 }
 
+.checked {
+  color: orange;
+}
+
+.rate {
+  margin-right: 15px;
+}
  @media (min-width: 768px) {
   .sidebar-wrapper {
     margin-left: 0;
@@ -185,9 +192,29 @@ body{
   }
 }
 
+.comment-body {
+  word-wrap: break-word;
+  border-color: gainsboro;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;;
+}
+
 .game-page {
   margin-top: 20px;
   justify-content: center;
+}
+
+.game-comments-name {
+  margin-top: 20px;
+  margin-left: 20px;
+  justify-content: center;
+}
+
+.game-comments {
+  margin-top: 20px;
+  margin-left: 20px;
+  justify-content: left;
 }
 
 .game_name {
