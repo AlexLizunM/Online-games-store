@@ -10,9 +10,4 @@ class Game < ApplicationRecord
   ransacker :price_money, formatter: proc { |dollars| dollars.to_i * 100 } do |p|
     p.table[:price]
   end
-
-  def average_ratio
-    ratings = self.comments.pluck(:rating)
-    ratings.count > 0 ? ratings.reduce(:+) / ratings.count : 0
-  end
 end

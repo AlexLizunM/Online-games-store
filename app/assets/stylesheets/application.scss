@@ -45,10 +45,16 @@ body{
     margin-bottom: 10px;
   }
 }
+
 .navbar-ht {
   padding-bottom: 10px;
   padding-top: 10px;
 }
+
+.sort_link {
+  color: aliceblue;
+}
+
 .search {
   margin-top: 20px;
   width: 220px;
@@ -202,7 +208,8 @@ body{
 
 .game-page {
   margin-top: 20px;
-  justify-content: center;
+  margin-right: 200px;
+  margin-left: 200px;
 }
 
 .game-comments-name {
@@ -218,8 +225,18 @@ body{
 }
 
 .game_name {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 800;
+}
+
+.game_data {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.cover {
+  max-height: 550px;
+  min-width: 1400px;
 }
 
 .col-4.game_button {

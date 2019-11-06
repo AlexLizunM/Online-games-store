@@ -1,6 +1,6 @@
 .row.game-comments-name
   %h1 Comments
-- current_user.comments.each do |c|
+- @comments.each do |c|
   .row.game-comments
     .col-2
       = link_to c.game.name, game_path(c.game)
@@ -17,5 +17,5 @@
         = f.hidden_field(:game_id, value: c.game.id)
         %button.btn.fas.fa-trash.btn-primary{type: "submit"}
 .row.justify-content-center.mt-5
-  != pagy_bootstrap_nav(@pagy)
+  != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
 
