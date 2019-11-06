@@ -1,0 +1,21 @@
+.row.game-comments-name
+  %h1 Comments
+- @comments.each do |c|
+  .row.game-comments
+    .col-2
+      = link_to c.game.name, game_path(c.game)
+    .col-3
+      - c.rating.to_i.times do
+        %span.fa.fa-star.checked
+      - (5 - c.rating.to_i).times do
+        %span.fa.fa-star
+    .col-5.comment-body
+      = c.content
+    .col-2
+      = form_with scope: :comment, local: true, url: user_comment_path(current_user, c.game), method: :delete do |f|
+        = f.hidden_field(:user_id, value: current_user.id)
+        = f.hidden_field(:game_id, value: c.game.id)
+        %button.btn.fas.fa-trash.btn-primary{type: "submit"}
+.row.justify-content-center.mt-5
+  != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
+

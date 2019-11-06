@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :parole, only:[:show, :update]
+    resources :comments, only:[:index, :create, :update, :destroy]
     resources :bucket_items, only:[:index, :create, :destroy]
   end
   

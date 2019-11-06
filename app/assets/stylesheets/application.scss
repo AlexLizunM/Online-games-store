@@ -45,10 +45,16 @@ body{
     margin-bottom: 10px;
   }
 }
+
 .navbar-ht {
   padding-bottom: 10px;
   padding-top: 10px;
 }
+
+.sort_link {
+  color: aliceblue;
+}
+
 .search {
   margin-top: 20px;
   width: 220px;
@@ -87,6 +93,13 @@ body{
   line-height: 35px;
 }
 
+.checked {
+  color: orange;
+}
+
+.rate {
+  margin-right: 15px;
+}
  @media (min-width: 768px) {
   .sidebar-wrapper {
     margin-left: 0;
@@ -185,14 +198,45 @@ body{
   }
 }
 
+.comment-body {
+  word-wrap: break-word;
+  border-color: gainsboro;
+  border-style: solid;
+  border-width: 2px;
+  border-radius: 5px;;
+}
+
 .game-page {
   margin-top: 20px;
+  margin-right: 200px;
+  margin-left: 200px;
+}
+
+.game-comments-name {
+  margin-top: 20px;
+  margin-left: 20px;
   justify-content: center;
 }
 
+.game-comments {
+  margin-top: 20px;
+  margin-left: 20px;
+  justify-content: left;
+}
+
 .game_name {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 800;
+}
+
+.game_data {
+  font-size: 28px;
+  font-weight: 400;
+}
+
+.cover {
+  max-height: 550px;
+  min-width: 1400px;
 }
 
 .col-4.game_button {

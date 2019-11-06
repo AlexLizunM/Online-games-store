@@ -8,5 +8,6 @@
         %a.list-group-item.list-group-item-action{href: user_path(@user), class: active_class(user_path(@user))}Profile
         %a.list-group-item.list-group-item-action{href: user_parole_path(@user), class: active_class(user_parole_path(@user))} Change password
         %a.list-group-item.list-group-item-action{href: user_bucket_items_path(@user), class: active_class(user_bucket_items_path(@user))} My Bucket
+        %a.list-group-item.list-group-item-action{href: user_comments_path(@user), class: active_class(user_comments_path(@user))} My Comments
   .col-9.float-left
     = yield 

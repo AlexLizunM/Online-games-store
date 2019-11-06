@@ -1,3 +1,30 @@
+.row.justify-content-center
+  = image_tag(@game.cover, class: 'img-fluid cover')
+.row.game-page
+  .col-4
+    %p.game_name
+      = @game.name
+    %p.game_data
+      %strong= Game.human_attribute_name("price:")
+      = to_dollars(@game.price)
+    %p
+      - @game.average_rating.to_i.times do
+        %span.fa.fa-star.checked
+      - (5 -@game.average_rating.to_i).times do
+        %span.fa.fa-star
+  .col-8
+    - if user_signed_in?
+      - if current_user.games.include?(@game)
+        %h3 Added to your Bucket
+        = form_with scope: :bucket_item, local: true, url: user_bucket_item_path(current_user), method: :delete do |f|
+          = f.hidden_field(:user_id, value: current_user.id)
+          = f.hidden_field(:game_id, value: @game.id)
+          = f.submit('Remove from Bucket', class: 'btn btn-primary btn-lg') 
+      - else
+        = form_with scope: :bucket_item, local: true, url: user_bucket_items_path(current_user), method: :post do |f|
+          = f.hidden_field(:user_id, value: current_user.id)
+          = f.hidden_field(:game_id, value: @game.id)
+          = f.submit('Add to Bucket', class: 'btn btn-primary btn-lg')
 .row.game-page
   .col-4
     #slider
@@ -12,26 +39,38 @@
           %a.carousel-control-next{'data-slide' => 'next', :href => '#myCarousel', :role => 'button'}
             %span.carousel-control-next-icon{'aria-hidden' => 'true'}
             %span.sr-only Next
-  .col-4
-    %p.game_name
-      = @game.name
-    %p
-      %strong= Game.human_attribute_name("price:")
-      = to_dollars(@game.price)
-    %p
-      %strong= Game.human_attribute_name("description:")
-      = @game.description
-    %p
+.row.game-page
+  %p.game_data
+    %strong= Game.human_attribute_name("description:")
+    = @game.description
+.row.game-page
+  .col-3.comment
     - if user_signed_in?
-      .col-4.game_button
-      - if current_user.games.include?(@game)
-        %h3 Added to your Bucket
-        = form_with scope: :bucket_item, local: true, url: user_bucket_item_path(current_user), method: :delete do |f|
-          = f.hidden_field(:user_id, value: current_user.id)
-          = f.hidden_field(:game_id, value: @game.id)
-          = f.submit('Remove from Bucket', class: 'btn btn-primary') 
-      - else
-        = form_with scope: :bucket_item, local: true, url: user_bucket_items_path(current_user), method: :post do |f|
-          = f.hidden_field(:user_id, value: current_user.id)
-          = f.hidden_field(:game_id, value: @game.id)
-          = f.submit('Add to Bucket', class: 'btn btn-primary')
+      = form_with scope: :comment, local: true, url: user_comments_path(current_user), method: :post do |f|
+        = f.hidden_field(:user_id, value: current_user.id)
+        = f.hidden_field(:game_id, value: @game.id)
+        = f.text_area(:content, placeholder: 'Leave a comment...', class: 'form-control', cols: 1, rows: 3)
+        %p
+          .row.justify-content-end.mr-2
+            .col-4
+              .row.justify-content-center
+                %h5.mr-2 rating
+                = f.select(:rating, options_for_select([1, 2, 3, 4, 5]))
+            .col-2
+              = f.submit('Save', class: 'btn btn-primary')
+.row.game-comments-name
+  %h1 Comments
+- @comments.each do |c|
+  .row.game-page
+    .col-1
+      = image_tag(c.user.avatar, size: '50x50') if c.user.avatar.attached?
+      = c.user.nickname
+    .col-2
+      - c.rating.to_i.times do
+        %span.fa.fa-star.checked
+      - (5 - c.rating.to_i).times do
+        %span.fa.fa-star
+    .col-6.comment-body
+      = c.content
+.row.justify-content-center.mt-5
+  != pagy_bootstrap_nav(@pagy) if @pagy.pages > 1
