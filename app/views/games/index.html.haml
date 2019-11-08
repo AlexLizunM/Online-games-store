@@ -13,6 +13,9 @@
         %strong Rating
   .page-content-wrapper 
     .container-fluid
+      #tag_cloud
+        - tag_cloud Game.tag_counts, %w[xxs xs s m l xl xxl] do |tag, css_class|
+          = link_to tag.name, tag_path(tag.name), class: css_class
       .row.justify-content-center 
         - @games.each do |game|
           .card.game-card

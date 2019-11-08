@@ -6,11 +6,11 @@
       %p
         = form.label User.human_attribute_name("name")
         %br/
-        = form.text_field(:nickname, class: 'form-control')
+        = form.text_field(:nickname, class: 'form-control', disabled: true)
       %p
         = form.label User.human_attribute_name("email")
         %br/
-        = form.email_field(:email, class: 'form-control')
+        = form.email_field(:email, class: 'form-control', disabled: true)
       %p
       = form.file_field :avatar
       %p

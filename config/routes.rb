@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resources :comments, only:[:index, :create, :update, :destroy]
     resources :bucket_items, only:[:index, :create, :destroy]
   end
-  
+
+  get 'tags/:tag', to: 'games#index', as: :tag
   root to: 'games#index'
 end
