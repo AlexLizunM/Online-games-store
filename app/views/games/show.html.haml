@@ -1,7 +1,15 @@
-.row.justify-content-center
-  = image_tag(@game.cover, class: 'img-fluid cover')
 .row.game-page
-  .col-4
+  .col-6
+    .game_slider
+      - @game.screenshots.each_with_index do |ss, index|
+        %div{class: "game-slide"}
+          = image_tag(ss, :class => 'img-fluid')
+    .nav_game_slider
+      - @game.screenshots.each_with_index do |ss, index|
+        %div{class: "game-slide"}
+          %div{class:"game-slide__wrapper"}
+            = image_tag(ss, :class => 'img-fluid')
+  .col-6
     %p.game_name
       = @game.name
     %p.game_data
@@ -12,7 +20,12 @@
         %span.fa.fa-star.checked
       - (5 -@game.average_rating.to_i).times do
         %span.fa.fa-star
-  .col-8
+    %p.game_data
+      %strong= Game.human_attribute_name("tags:")
+      = raw tag_links(@game.tag_list)
+    %p.game_data
+      %strong= Game.human_attribute_name("description:")
+      = @game.description
     - if user_signed_in?
       - if current_user.games.include?(@game)
         %h3 Added to your Bucket
@@ -25,48 +38,27 @@
           = f.hidden_field(:user_id, value: current_user.id)
           = f.hidden_field(:game_id, value: @game.id)
           = f.submit('Add to Bucket', class: 'btn btn-primary btn-lg')
+    
 .row.game-page
-  .col-4
-    #slider
-      #myCarousel.carousel.slide
-        .carousel-inner
-          - @game.screenshots.each_with_index do |ss, index|
-            %div{class: "carousel-item #{'active' if index == 0}", "data-slide-number" => index}
-              = image_tag(ss, :class => 'img-fluid')
-          %a.carousel-control-prev{'data-slide' => 'prev', :href => '#myCarousel', :role => 'button'}
-            %span.carousel-control-prev-icon{'aria-hidden' => 'true'}
-            %span.sr-only Previous
-          %a.carousel-control-next{'data-slide' => 'next', :href => '#myCarousel', :role => 'button'}
-            %span.carousel-control-next-icon{'aria-hidden' => 'true'}
-            %span.sr-only Next
-.row.game-page
-  %p.game_data
-    %strong= Game.human_attribute_name("tags:")
-    = raw tag_links(@game.tag_list)
-.row.game-page
-  %p.game_data
-    %strong= Game.human_attribute_name("description:")
-    = @game.description
-.row.game-page
-  .col-3.comment
+  .col-6.comment
     - if user_signed_in?
       = form_with scope: :comment, local: true, url: user_comments_path(current_user), method: :post do |f|
         = f.hidden_field(:user_id, value: current_user.id)
         = f.hidden_field(:game_id, value: @game.id)
-        = f.text_area(:content, placeholder: 'Leave a comment...', class: 'form-control', cols: 1, rows: 3)
-        %p
-          .row.justify-content-end.mr-2
-            .col-4
-              .row.justify-content-center
+        .row
+          .col-6
+            = f.text_area(:content, placeholder: 'Leave a comment...', class: 'form-control', cols: 1, rows: 3)
+          .col-6
+            .row.flex-column.justify-content-between.comment_raiting
+              .row
                 %h5.mr-2 rating
                 = f.select(:rating, options_for_select([1, 2, 3, 4, 5]))
-            .col-2
               = f.submit('Save', class: 'btn btn-primary')
 .row.game-comments-name
   %h1 Comments
 - @comments.each do |c|
-  .row.game-page
-    .col-1
+  .row.game-page.align-items-center
+    .col-2
       = image_tag(c.user.avatar, size: '50x50') if c.user.avatar.attached?
       = c.user.nickname
     .col-2
