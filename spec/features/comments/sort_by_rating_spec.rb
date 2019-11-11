@@ -14,14 +14,14 @@ feature 'Look at my comments', type: :feature do
   scenario 'I can see games sorted right when sorted ASC', js: true do
     click_link 'Rating'
 
-    expect(page.find(:xpath, '/HTML/BODY[1]/DIV[1]/DIV[2]/DIV[1]/DIV[1]/DIV[1]')).to have_content 'Duke Nukem'
+    expect(page.find(:xpath, '/HTML/BODY[1]/DIV[1]/DIV[2]/DIV[1]/DIV[2]/DIV[1]')).to have_content 'Duke Nukem'
   end
 
   scenario 'I can see games sorted right when sorted DESC', js: true do
     click_link 'Rating'
     click_link 'Rating'
 
-    expect(page.find(:xpath, '/HTML/BODY[1]/DIV[1]/DIV[2]/DIV[1]/DIV[1]/DIV[1]')).to have_content 'Skyrim'
+    expect(page.find(:xpath, '/HTML/BODY[1]/DIV[1]/DIV[2]/DIV[1]/DIV[2]/DIV[1]')).to have_content 'Skyrim'
 
   end
 end

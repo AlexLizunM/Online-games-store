@@ -5,7 +5,7 @@ class GamesController < ApplicationController
   COMMENTS_PER_PAGE = 10
 
   def index
-    @q = Game.ransack(params[:q])
+    @q = Game.tagged_with(params[:tag]).ransack(params[:q])
     @pagy, @games = pagy(@q.result, items: ITEMS_PER_PAGE)
   end
 

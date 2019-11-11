@@ -41,6 +41,10 @@
             %span.sr-only Next
 .row.game-page
   %p.game_data
+    %strong= Game.human_attribute_name("tags:")
+    = raw tag_links(@game.tag_list)
+.row.game-page
+  %p.game_data
     %strong= Game.human_attribute_name("description:")
     = @game.description
 .row.game-page
