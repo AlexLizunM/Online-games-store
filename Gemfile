@@ -35,6 +35,7 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'omniauth-facebook'
+gem "jquery-slick-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password

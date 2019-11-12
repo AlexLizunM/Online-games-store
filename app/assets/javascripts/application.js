@@ -17,3 +17,23 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
+//= require jquery.slick
+document.addEventListener('turbolinks:load', function () {
+  $('.game_slider').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    asNavFor: ".nav_game_slider",
+    infinite: false,
+    arrows: false,
+  });
+  $('.nav_game_slider').slick({
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    focusOnSelect: true,
+    arrows: true,
+    asNavFor: ".game_slider",
+    infinite: false,
+    prevArrow: '<div class="prev"><i class="fas fa-chevron-left"></i></div>',
+    nextArrow: '<div class="next"><i class="fas fa-chevron-right"></i></div>'
+  });
+})

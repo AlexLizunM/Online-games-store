@@ -15,6 +15,7 @@
  */
  @import "_bootstrap";
  @import "font-awesome";
+ @import "slick";
 
  .game-title {
    text-align: right;
@@ -244,12 +245,15 @@ body{
 }
 
 #tag_cloud {
-  width: 400px;
+  width: 100%;
   box-shadow: 0px 3px 8px -4px rgba(0,0,0,0.15);
   background: white;
   border-radius: 4px;
-  padding-bottom: 12px;
+  padding: 10px 15px 12px 60px;
   line-height: 1.6em;
+  a:not(:last-child) {
+    margin-right: 5px;
+  }
   .xxs { font-size: 0.8em; COLOR: #c3c4c4; }
   .xs { font-size: 1.0em; COLOR: #b9bdbd; }
   .s { font-size: 1.2em; COLOR: #b0b5b5; }
@@ -257,4 +261,51 @@ body{
   .l { font-size: 1.6em; COLOR: #8a9797; }
   .xl { font-size: 1.8em; COLOR: #809090; }
   .xxl { font-size: 2.0em; COLOR: #778888; }
+}
+
+.nav_game_slider {
+  margin: 0 10px;
+  .slick-arrow{
+    cursor: pointer;
+    top: 26%;
+    position: absolute;
+    &.next{
+      right: -10px;
+    }
+    &.prev{
+      left: -10px;
+    }
+  }
+
+  .game-slide__wrapper {
+    width: 120px;
+    height: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.game_slider {
+  margin-bottom: 15px;
+  .game-slide{
+    height: 380px;
+    img{
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.comment_raiting {
+  height: 100%;
+  .row{
+    margin-left: 0;
+  }
+  .btn{
+    width: 100px;
+  }
 }

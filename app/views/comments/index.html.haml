@@ -1,7 +1,7 @@
 .row.game-comments-name
   %h1 Comments
 - @comments.each do |c|
-  .row.game-comments
+  .row.game-comments.align-items-center
     .col-2
       = link_to c.game.name, game_path(c.game)
     .col-3
