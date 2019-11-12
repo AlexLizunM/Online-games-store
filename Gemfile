@@ -35,6 +35,7 @@ gem 'cancancan'
 gem 'draper'
 gem 'pundit'
 gem 'omniauth-facebook'
+gem 'faker', git: 'https://github.com/stympy/faker'
 gem "jquery-slick-rails"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
@@ -54,7 +55,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
-  gem 'faker', git: 'https://github.com/stympy/faker'
 end
 
 group :development do
