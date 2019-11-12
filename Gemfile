@@ -36,7 +36,7 @@ gem 'draper'
 gem 'pundit'
 gem 'omniauth-facebook'
 gem 'faker', git: 'https://github.com/stympy/faker'
-gem "jquery-slick-rails"
+gem 'jquery-slick-rails'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -50,7 +50,9 @@ gem "jquery-slick-rails"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-
+group :production do
+  gem 'aws-sdk-s3'
+end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
