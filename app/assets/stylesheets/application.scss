@@ -251,7 +251,7 @@ body{
   border-radius: 4px;
   padding: 10px 15px 12px 60px;
   line-height: 1.6em;
-  a:not(:last-child){
+  a:not(:last-child) {
     margin-right: 5px;
   }
   .xxs { font-size: 0.8em; COLOR: #c3c4c4; }
@@ -262,7 +262,8 @@ body{
   .xl { font-size: 1.8em; COLOR: #809090; }
   .xxl { font-size: 2.0em; COLOR: #778888; }
 }
-.nav_game_slider{
+
+.nav_game_slider {
   margin: 0 10px;
   .slick-arrow{
     cursor: pointer;
@@ -275,7 +276,8 @@ body{
       left: -10px;
     }
   }
-  .game-slide__wrapper{
+
+  .game-slide__wrapper {
     width: 120px;
     height: 80px;
     margin-left: auto;
@@ -286,7 +288,8 @@ body{
     }
   }
 }
-.game_slider{
+
+.game_slider {
   margin-bottom: 15px;
   .game-slide{
     height: 380px;
@@ -296,7 +299,8 @@ body{
     }
   }
 }
-.comment_raiting{
+
+.comment_raiting {
   height: 100%;
   .row{
     margin-left: 0;
