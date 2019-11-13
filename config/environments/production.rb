@@ -63,8 +63,6 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "online-games-store_#{Rails.env}"
 
-  config.action_mailer.perform_caching = false
-
   config.action_mailer.perform_deliveries = true
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -77,6 +75,7 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   :address              => "smtp.gmail.com",
   :port                 => 587,
+  :domain               => 'gmail.com'
   :user_name            => ENV['MAIL_NAME'],
   :password             => ENV['MAIL_PASS'],
   :authentication       => "plain",
