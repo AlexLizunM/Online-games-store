@@ -12,6 +12,9 @@
 end
 
 tag_arr = Tag.all
+pics_arr = ['db/picture_for_seed/duke.jpg', 'db/picture_for_seed/ss_duke.jpeg', 'db/picture_for_seed/duk.jpeg',
+  'db/picture_for_seed/dukalis.jpeg', 'db/picture_for_seed/duke_gun.jpg',
+  'db/picture_for_seed/dukk.jpeg', 'db/picture_for_seed/duuk.jpg' ]
 
 20.times do
   game = Game.create!(
@@ -19,7 +22,9 @@ tag_arr = Tag.all
     price:Faker::Number.within(range: 100..10000),
     description:Faker::ChuckNorris.fact
   )
+
   tag_arr_curr = tag_arr.to_a
+
   rand(1..3).times do
     tag_curr = tag_arr_curr.sample
     game.taggings.create!(
@@ -27,14 +32,16 @@ tag_arr = Tag.all
     )
     tag_arr_curr.delete(tag_curr)
   end
-  game.cover.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/duke.jpg'), filename: 'duke.jpg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/ss_duke.jpeg'), filename: 'ss_duke.jpeg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/duk.jpeg'), filename: 'duk.jpeg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/dukalis.jpeg'), filename: 'dukalis.jpeg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/duke_gun.jpg'), filename: 'duke_gun.jpg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/dukk.jpeg'), filename: 'dukk.jpeg')
-  game.screenshots.attach(io: File.open('db/picture_for_seed/duuk.jpg'), filename: 'duuk.jpg')
+
+  game.cover.attach(io: File.open(pics_arr.sample), filename: 'cover.jpg')
+
+  pics_arr_curr = pics_arr
+
+  rand(5..7).times do
+    pic_curr = pics_arr.sample
+    game.screenshots.attach(io: File.open(pic_curr), filename: File.basename(pic_curr))
+    pics_arr_curr.delete(pic_curr)
+  end
 end
 
 AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

@@ -1,5 +1,6 @@
 class Comment < ApplicationRecord
   after_create :set_average_ratio
+  after_destroy :set_average_ratio
 
   belongs_to :user
   belongs_to :game
