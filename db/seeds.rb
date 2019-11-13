@@ -14,9 +14,9 @@ end
 tag_arr = Tag.all
 pics_arr = ['db/picture_for_seed/duke.jpg', 'db/picture_for_seed/ss_duke.jpeg', 'db/picture_for_seed/duk.jpeg',
   'db/picture_for_seed/dukalis.jpeg', 'db/picture_for_seed/duke_gun.jpg',
-  'db/picture_for_seed/dukk.jpeg', 'db/picture_for_seed/duuk.jpg' ]
+  'db/picture_for_seed/dukk.jpeg', 'db/picture_for_seed/duuk.jpg']
 
-20.times do
+30.times do
   game = Game.create!(
     name:Faker::Game.title,
     price:Faker::Number.within(range: 100..10000),
@@ -35,10 +35,10 @@ pics_arr = ['db/picture_for_seed/duke.jpg', 'db/picture_for_seed/ss_duke.jpeg', 
 
   game.cover.attach(io: File.open(pics_arr.sample), filename: 'cover.jpg')
 
-  pics_arr_curr = pics_arr
+  pics_arr_curr = pics_arr.clone
 
   rand(5..7).times do
-    pic_curr = pics_arr.sample
+    pic_curr = pics_arr_curr.sample
     game.screenshots.attach(io: File.open(pic_curr), filename: File.basename(pic_curr))
     pics_arr_curr.delete(pic_curr)
   end
