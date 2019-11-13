@@ -10,7 +10,7 @@ Devise.setup do |config|
 
   config.strip_whitespace_keys = [:email]
 
-  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], callback_url: "#{ENV['HOST']}/users/auth/facebook/callback"
+  config.omniauth :facebook, ENV['FACEBOOK_APP_ID'], ENV['FACEBOOK_APP_SECRET'], callback_url: "#{ENV['HOST_FB']}/users/auth/facebook/callback"
 
   config.scoped_views = true
 
