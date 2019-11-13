@@ -44,4 +44,4 @@ pics_arr = ['db/picture_for_seed/duke.jpg', 'db/picture_for_seed/ss_duke.jpeg', 
   end
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
